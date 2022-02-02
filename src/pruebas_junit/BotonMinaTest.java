@@ -2,6 +2,7 @@ package pruebas_junit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -21,12 +22,18 @@ class BotonMinaTest {
 		for(Estado estado : Estado.values())
 		{
 			BotonMina boton=new BotonMina();
-			System.out.println("Botón Inicial:\t[Val=" + boton.getValor() + " , Est=" + boton.getEstado() + "]");
+			System.out.println("Botón Inicial:\t" + boton);
 			System.out.println("Nuevo estado:\t" + estado);
 			boton.cambiarAspecto(estado);
-			System.out.println("Botón Inicial:\t[Val=" + boton.getValor() + " , Est=" + boton.getEstado() + "]");
+			assertTrue(boton.getEstado().equals(estado));
+			System.out.println("Botón Inicial:\t" + boton);
 			System.out.println("");
 		}
+	}
+	
+	@AfterAll
+	@Test
+	static void fin() {
 		System.out.println("*************** Fin Prueba BotonMina ***************");
 	}
 }
